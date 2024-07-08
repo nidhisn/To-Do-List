@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
-class ToDoAdapter(private val context: Context, private val descriptionList:List<ToDO>):RecyclerView.Adapter<ToDoAdapter.MyViewHolder>() {
+class ToDoAdapter(private val context: Context, private val descriptionList:MutableList<ToDO>):RecyclerView.Adapter<ToDoAdapter.MyViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
         val itemView=LayoutInflater.from(parent.context).inflate(R.layout.to_do_list, parent, false)
@@ -29,9 +29,14 @@ class ToDoAdapter(private val context: Context, private val descriptionList:List
         fun bind(toDo: ToDO) {
             tvDescription.text=toDo.description
         }
-
-
     }
+
+
+    fun addItem(toDo: ToDO) {
+        descriptionList.add(toDo)
+        notifyItemInserted(descriptionList.size - 1)
+    }
+
 
 
 }
