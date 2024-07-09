@@ -74,7 +74,7 @@ class MainActivity : AppCompatActivity() {
     private fun addToDoItem(description: String) {
             val newToDo=ToDO(description)
             descriptionList.add(newToDo)
-            adapter.notifyItemInserted(descriptionList.size-1)
+            adapter.notifyDataSetChanged()
 
     }
 
